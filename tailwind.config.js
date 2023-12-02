@@ -9,6 +9,12 @@ export default {
     fontFamily: {
       inter: "Inter, sans-serif",
     },
+    borderColor: {
+      1: "#000",
+    },
+    borderWidth: {
+      1: "1px",
+    },
     extend: {},
   },
   plugins: [],
