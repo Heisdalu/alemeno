@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { PiVideo } from "react-icons/pi";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
@@ -8,18 +8,24 @@ import { LessonTypes } from "../../../@types";
 
 interface WeekLessonTypes {
   item: LessonTypes;
+  count: number;
+  specialkey: number;
 }
 
-const WeekLesson: FC<WeekLessonTypes> = ({ item }) => {
+const WeekLesson: FC<WeekLessonTypes> = ({ item, count, specialkey }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  // const makeWeekLessonAccessible = () => {
-
-  // }
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const toggleFunc = () => {
     setIsOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (count === specialkey) {
+      // focus
+      buttonRef.current?.focus();
+    }
+  }, [count, specialkey]);
 
   return (
     <div
@@ -27,12 +33,12 @@ const WeekLesson: FC<WeekLessonTypes> = ({ item }) => {
       className="flex flex-col border-[1px] border-b-[0] border-[#d1d7dc] last:border-b-[1px]"
     >
       <button
+        ref={buttonRef}
         aria-expanded={isOpen}
         aria-controls="buttonDropdown"
         aria-haspopup="true"
         onClick={toggleFunc}
-
-        className="lessonBtn p-[1rem] border-b-[0px] border-[#d1d7dc] text-left flex items-center space-x-[1rem] bg-[#f7f9fa] break-all"
+        className="lessonBtn outline-[0] focus-within:outline-[0] focus-within:border-1 p-[1rem] border-b-[0px] border-[#d1d7dc] text-left flex items-center space-x-[1rem] bg-[#f7f9fa] break-all"
       >
         <span aria-hidden="true">
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
