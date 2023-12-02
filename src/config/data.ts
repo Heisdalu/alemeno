@@ -42,6 +42,7 @@ export const courseModel = [
         ],
       },
     ],
+    students: [],
   },
   {
     id: 2, // Unique identifier for the course
@@ -64,28 +65,17 @@ export const courseModel = [
       {
         week: 1,
         topic: "Introduction",
-        content: "Brief of Python. Installation of Python",
+        content: ["Brief of Python. Installation of Python"],
       },
       {
         week: 2,
         topic: "Python Basis",
-        content:
+        content: [
           "Let's have a look at how Python is executed, also how strings and functions works",
+        ],
       },
     ],
-    students: [
-      {
-        id: 101,
-        name: "Alice Johnson",
-        email: "alice@example.com",
-      },
-      {
-        id: 102,
-        name: "Bob Smith",
-        email: "bob@example.com",
-      },
-      // Additional enrolled students...
-    ],
+    students: [],
   },
   {
     id: 3,
@@ -108,40 +98,38 @@ export const courseModel = [
       {
         week: 1,
         topic: "Introduction",
-        content: "Brief of Java. Installation of Java",
+        content: ["Brief of Java", "Installation of Java"],
       },
       {
         week: 2,
         topic: "Java Basis",
-        content:
-          "Lecture 4: More on Data Types , Working with Arrays, Control Flow using if-else and switch statements",
+        content: [
+          "Lecture 4: More on Data Types",
+          "Working with Arrays",
+          "Control Flow using if-else and switch statements",
+        ],
       },
       {
         week: 3,
         topic: "Understanding Object Orientation",
-        content:
-          "Class and Object, Program Flow, Program Structure and Application Runtime, Java Stack + Heap with Reference Variables",
+        content: [
+          "Class and Object",
+          "Program Flow",
+          "Program Structure and Application Runtime",
+          "Java Stack + Heap with Reference Variables",
+        ],
       },
       {
         week: 4,
         topic: "Understanding Method",
-        content:
-          "Lecture 7: Methods in Java, Method Visibility and Static vs. Instance",
+        content: [
+          "Methods in Java",
+          "Method Visibility",
+          "Static vs. Instance",
+        ],
       },
     ],
-    students: [
-      {
-        id: 101,
-        name: "Alice Johnson",
-        email: "alice@example.com",
-      },
-      {
-        id: 102,
-        name: "Bob Smith",
-        email: "bob@example.com",
-      },
-      // Additional enrolled students...
-    ],
+    students: [],
   },
   {
     id: 4,
@@ -164,7 +152,7 @@ export const courseModel = [
       {
         week: 1,
         topic: "Your First C# Program and Overview of Visual Studio",
-        content: "Introduction of C#. Installation of C#",
+        content: ["Introduction of C#. Installation of C#"],
       },
     ],
     students: [],
@@ -188,28 +176,31 @@ export const courseModel = [
       {
         week: 1,
         topic: "Introduction",
-        content: "Dive into React. Set up Development Environment",
+        content: ["Dive into React. Set up Development Environment"],
       },
       {
         week: 2,
         topic: "React Fundamentals",
-        content:
-          "JSX Rules, Nest Components, React Developer Tools, Props, States",
+        content: [
+          "JSX Rules, Nest Components",
+          "React Developer Tools",
+          "Props, States",
+        ],
       },
       {
         week: 3,
         topic: "React Hooks",
-        content: "UseState, UseEffect, and others",
+        content: ["UseState, UseEffect, and others"],
       },
       {
         week: 4,
         topic: "Axios HTTP Library",
-        content: "Get Request, Setup Headers",
+        content: ["Get Request", "Setup Headers"],
       },
       {
         week: 5,
         topic: "React Query",
-        content: "React Query Info, Thunder Client, HTTP Methods",
+        content: ["React Query Info", "Thunder Client", "HTTP Methods"],
       },
     ],
     students: [],
@@ -235,16 +226,30 @@ export const courseModel = [
       {
         week: 1,
         topic: "Getting Started",
-        content:
-          "Welcome to the Course!, What is the TypeScript & Why should you use it. TypeScript Basis & Basis Types",
+        content: [
+          "Welcome to the Course!",
+          "What is the TypeScript & Why should you use it",
+          "TypeScript Basis & Basis Types",
+        ],
       },
       {
         week: 2,
         topic: "TypeScript Complier and (it's configuration)",
-        content:
-          "Using Watch Mode, Compiling the Entire Project / Multiple Files, Including & Excluding Files,Setting a Compilation Target, Understanding TypeScript Core Libs, More Configuration & Compilation Options, Working with Source Maps, rootDir and outDir, Stop Emitting Files on Compilation Errors, Strict Compilation",
+        content: [
+          "Using Watch Mode",
+          "Compiling the Entire Project / Multiple Files",
+          "Including & Excluding Files",
+          "Setting a Compilation Target",
+          "Understanding TypeScript Core Libs",
+          "More Configuration & Compilation Options",
+          "Working with Source Maps",
+          "rootDir and outDir",
+          "Stop Emitting Files on Compilation Errors",
+          "Strict Compilation",
+        ],
       },
     ],
+    students: [],
   },
   {
     id: 7,
@@ -266,14 +271,20 @@ export const courseModel = [
       {
         week: 1,
         topic: "Getting Started",
-        content: "Primitive Types & Control Flow",
+        content: ["Primitive Types", "Control Flow"],
       },
       {
         week: 2,
         topic: "Primitive Types & Control Flow",
-        content: "Scalar Types ,Compound Types, Simple Types,Control Flow",
+        content: [
+          "Scalar Types",
+          "Compound Types",
+          "Simple Types",
+          "Control Flow",
+        ],
       },
     ],
+    students: [],
   },
   {
     id: 8,
@@ -296,14 +307,27 @@ export const courseModel = [
       {
         week: 1,
         topic: "Basis & Core Concepts - DOM Interaction with Vue",
-        content:
-          "Creating and Connecting Vue App Instances, Interpolation and Data Binding, Binding Attributes with the v-bind Directive, Understanding methods in Vue Apps, Working with Data inside of a Vue App ,Outputting Raw HTML Content with v-html",
+        content: [
+          "Creating and Connecting Vue App Instances",
+          "Interpolation and Data Binding",
+          "Binding Attributes with the v-bind Directive",
+          "Understanding methods in Vue Apps",
+          "Working with Data inside of a Vue App",
+          "Outputting Raw HTML Content with v-html",
+        ],
       },
       {
         week: 2,
         topic: "Rendering Conditional Content & List",
-        content:
-          "Understanding the Problem, Rendering Content Conditionally, v-if, v-else and v-else-if, Using v-show Instead Of v-if, Rendering Lists of Data, Diving Deeper Into v-for, Removing List Items",
+        content: [
+          "Understanding the Problem",
+          "Rendering Content Conditionally",
+          "v-if, v-else and v-else-if",
+          "Using v-show Instead Of v-if",
+          "Rendering Lists of Data",
+          "Diving Deeper Into v-for",
+          "Removing List Items",
+        ],
       },
       {
         week: 3,
@@ -312,6 +336,7 @@ export const courseModel = [
           "An Introduction to Vue's Reactivity, Vue Reactivity: A Deep Dive, One App vs Multiple Apps, Understanding Templates, Working with Refs, How Vue Updates the DOM, Vue App Lifecycle - Theory",
       },
     ],
+    students: [],
   },
   {
     id: 9,
@@ -330,9 +355,14 @@ export const courseModel = [
       {
         week: 1,
         topic: "Variable and Strings",
-        content: "Strings, Chars, Nullability, User Input, Type Conversion",
+        content: [
+          "Strings, Chars",
+          "Nullability",
+          "User Input, Type Conversion",
+        ],
       },
     ],
+    students: [],
   },
   {
     id: 10,
@@ -392,37 +422,6 @@ export const courseModel = [
         ],
       },
     ],
+    students: [],
   },
 ];
-
-/* 
-JavaScript (Programming Language)
-Python (Programming Language)
-Java (Programming Language)
-C# (Programming Language)
-C++ (Programming Language)
-Ruby (Programming Language)
-Swift (Programming Language)
-TypeScript (Programming Language)
-Go (Programming Language)
-Kotlin (Programming Language)
-PHP (Programming Language)
-Rust (Programming Language)
-HTML/CSS (Markup Languages often used in Front-End Development)
-React (JavaScript Library for Building UI)
-Angular (Front-End Web Application Framework)
-Vue.js (JavaScript Framework for Building User Interfaces)
-Node.js (JavaScript Runtime for Server-Side Development)
-Express.js (Web Application Framework for Node.js)
-Django (High-level Python Web Framework)
-Flask (Web Framework for Python)
-Spring Boot (Java-Based Framework for Building Java Applications)
-ASP.NET (Framework for Building Web Applications with C#)
-Ruby on Rails (Web Application Framework for Ruby)
-Vue.js (JavaScript Framework for Building User Interfaces)
-Angular (Front-End Web Application Framework)
-React Native (Framework for Building Mobile Applications using React)
-Docker (Containerization Platform)
-Kubernetes (Container Orchestration Platform)
-Jenkins (Automation Server for Continuous Integration and Continuous Delivery)
-Ansible (Automation Tool for Configuration Management and Application Deployment)*/
