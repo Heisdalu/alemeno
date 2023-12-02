@@ -16,7 +16,9 @@ const Header = () => {
         />
       </div>
 
-      <button className="bg-purple-600 p-[1rem] rounded-[0.5rem]">Enrolled Courses</button>
+      <button className="bg-purple-600 p-[1rem] rounded-[0.5rem] text-white">
+        Enrolled Courses
+      </button>
     </div>
   );
 };

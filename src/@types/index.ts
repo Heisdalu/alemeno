@@ -23,3 +23,8 @@ export interface CourseDetailTypes {
   syllabus: { week: number; topic: string; content: string[] }[];
   students: string[];
 }
+export interface LessonTypes {
+  week: number;
+  topic: string;
+  content: string[];
+}
