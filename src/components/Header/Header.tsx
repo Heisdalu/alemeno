@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 
 const Header = () => {
   return (
-    <div className="border-1 py-[1.5rem] flex items-center justify-center flex-col space-y-[1rem] md:flex-row md:justify-between md:space-y-0">
+    <div className="py-[1.5rem] flex items-center justify-center flex-col space-y-[1rem] md:flex-row md:justify-between md:space-y-0">
       <div className="border-1 rounded-[0.5rem] flex items-center space-x-1 mx-auto px-1 md:mx-[0] md:w-[300px]">
         <label htmlFor="search">
           <CiSearch />
