@@ -1,4 +1,4 @@
-export const courseModel = [
+export const db = [
   {
     id: 1,
     name: "JavaScript - The Complete Guide 2023 (Beginner + Advanced)",
