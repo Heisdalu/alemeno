@@ -1,4 +1,4 @@
-# Dracora
+# Alemeno
 
 Alemeno Assesment
 
@@ -35,6 +35,7 @@ Alemeno Assesment
 - Built an accessible syllabus component and it accessible by keyboard and screen users. you can focus on it and try it out.
 - Built a student dashboard page to show courses, the student enrolled for
 - added an accessible progress bar and also the completed button
+- added a debounce function to improve site perfomance on the search bar
 
 ## Installation
 
