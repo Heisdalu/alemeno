@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { db } from "./config/firebase";
 import { doc, onSnapshot, DocumentData } from "firebase/firestore";
 import { update } from "./redux/slice/courseListSlice";
+import { studentUpdate } from "./redux/slice/studentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./redux/store";
 
@@ -25,8 +26,11 @@ function App() {
     id,
   };
 
+  console.log("yesssss");
+
   useEffect(() => {
     const fetchLatestChanges = async () => {
+      // get all courses
       onSnapshot(doc(db, "courses", "ER73xsXKT6GnYIkJxZAn"), (doc) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const latestData: DocumentData | any = doc?.data();
@@ -49,9 +53,37 @@ function App() {
           );
         }
       });
+
+      // get student dashboard as you long the first content
+      // id might be null
+      if (id) {
+        onSnapshot(doc(db, "students", id), (doc) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const studentLatestData: DocumentData | any = doc?.data();
+          // if it returns undefined.. an error occured
+          if (studentLatestData) {
+            dispatch(
+              studentUpdate({
+                student_new_data_state: studentLatestData.studentInfo || [],
+                loading: false,
+                errorPresent: false,
+              })
+            );
+          } else {
+            dispatch(
+              studentUpdate({
+                student_new_data_state: [],
+                loading: false,
+                errorPresent: true,
+              })
+            );
+          }
+        });
+      }
     };
     fetchLatestChanges();
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, id]);
 
   return (
     <>
@@ -62,7 +94,7 @@ function App() {
           element={<CourseDetail {...courseData} />}
         />
         <Route path="/dashboard" element={<StudentDashboard />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search" element={<SearchPage {...courseData} />} />
         {/* <Route path="*" element={<HomePage />} /> */}
       </Routes>
     </>

@@ -1,15 +1,74 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { CourseCardTypes } from "../../@types";
 import { Link } from "react-router-dom";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import useId from "../../hooks/useId";
 
 import { CiHeart } from "react-icons/ci";
-// import { FcLike } from "react-icons/fc";
+import { FcLike } from "react-icons/fc";
 // mnumber of students liked #f23
 interface Props {
   data: CourseCardTypes;
+  allData: CourseCardTypes[];
 }
 
-const CourseCard: FC<Props> = ({ data }) => {
+const CourseCard: FC<Props> = ({ data, allData }) => {
+  const { id } = useId();
+  // check if user liked initially
+  const userLiked = allData
+    .filter((el) => el.id === data.id)
+    .some((el) => el.students.includes(`${id}`));
+
+  const [liked, setClicked] = useState(userLiked);
+  const [mount, setMount] = useState(false);
+
+  const loveHandler = () => {
+    setClicked((prev) => !prev);
+    setMount(true);
+  };
+
+  useEffect(() => {
+    const updateFunc = async (obj: CourseCardTypes[]) => {
+      try {
+        const washingtonRef = doc(db, "courses", "ER73xsXKT6GnYIkJxZAn");
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+          data: obj,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+
+    const likedFunc = async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (liked && id && mount) {
+        const newData = structuredClone(allData).map((el) => {
+          if (el.id === data.id) {
+            el.students = [...el.students, id];
+          }
+
+          return el;
+        });
+        updateFunc(newData);
+      }
+      if (!liked && id && mount) {
+        const newData = structuredClone(allData).map((el) => {
+          if (el.id === data.id) {
+            el.students = el.students.filter((itemid) => itemid !== id);
+          }
+          return el;
+        });
+        updateFunc(newData);
+        console.log(newData);
+      }
+    };
+
+    likedFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [liked, mount]);
 
   return (
     <div className="max-w-[350px] mx-auto md:grid md:[grid-template-columns:250px_1fr] md:[grid-gap:1.5rem] md:max-w-[none]">
@@ -32,12 +91,15 @@ const CourseCard: FC<Props> = ({ data }) => {
           </h1>
           <p className=" break-words">{data.description}</p>
         </Link>
-        <div className="flex items-center space-x-[0.3rem]">
-          {<CiHeart />}{" "}
+        <button
+          className="flex items-center space-x-[0.3rem]"
+          onClick={loveHandler}
+        >
+          {liked ? <FcLike /> : <CiHeart />}
           <span className="text-[0.8rem]">
             {data.students.length === 0 ? "" : data.students.length}
           </span>
-        </div>
+        </button>
         <Link to={`/course-detail?course=${data.id}`}>
           <div className="text-gray-500 flex space-x-[0.4rem]">
             <h3>Instructor:</h3>

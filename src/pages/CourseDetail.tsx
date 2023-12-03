@@ -7,21 +7,74 @@ import { courseListTypes } from "../@types";
 import Loading from "../components/Loading/Loading";
 import ErrorModal from "../components/ErrorModal/ErrorModal";
 import { Link } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import useId from "../hooks/useId";
+import { generateRandomNumber, randomDueDate } from "../helper";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const CourseDetail: FC<courseListTypes> = ({ data, error, loading }) => {
+  const { id } = useId();
   const [course_id] = useSearchParams();
+  const studentList = useSelector((state: RootState) => state.studentList.data);
+
   // console.log(course_id.get("course"));
 
   const courseDetailItem = data.find(
     (el) => el.id === Number(course_id?.get("course"))
   );
-  console.log(courseDetailItem);
+
+  console.log(studentList);
+  // console.log(
+  //   studentList.some((el) => {
+  //     console.log(el.topic ===);
+
+  //     el.topic?.includes(courseDetailItem?.name);
+  //   })
+  // );
+
+  /*
+thumbnail
+title
+description
+random date
+random value.. 1,100
+*/
 
   // i do not want to refetch this course_id.. since it's more of
   // a dummy project..instead i use the recently real time fetched data
   // so when there is a new chnage like liking courses.. it reflect as fast as possible
 
-  // const
+  const enrolledHandler = async () => {
+    const mainData = studentList.filter(
+      (el) => el.topic !== courseDetailItem?.name
+    );
+
+    const oldinfo = [
+      ...mainData,
+      {
+        topic: courseDetailItem?.name,
+        instructor: courseDetailItem?.instructor,
+        thumbnail: courseDetailItem?.thumbnail,
+        text: courseDetailItem?.description,
+        date: randomDueDate(),
+        enrolledPercent: generateRandomNumber(1, 70),
+      },
+    ];
+
+    if (id) {
+      try {
+        await setDoc(doc(db, "students", id), {
+          studentInfo: [...oldinfo],
+        });
+
+        console.log("hhhdhdhdh");
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -57,6 +110,10 @@ const CourseDetail: FC<courseListTypes> = ({ data, error, loading }) => {
     );
   }
 
+  const status =
+    courseDetailItem?.enrollmentStatus?.toLowerCase() === "closed"
+      ? true
+      : false;
   return (
     <Wrapper>
       <div className="py-[1rem] space-y-1 pb-[3rem] md:space-y-[2rem]">
@@ -80,8 +137,12 @@ const CourseDetail: FC<courseListTypes> = ({ data, error, loading }) => {
         </div>
 
         <div className="space-y-[1rem] flex flex-col py-[1rem] md:py-[0] md:pb-[2rem]">
-          <button className="max-w-[200px] bg-gray-600 p-[1rem] rounded-[0.5rem] text-white">
-            Enroll to this course
+          <button
+            onClick={enrolledHandler}
+            disabled={status}
+            className="disabled:bg-gray-400 max-w-[200px] bg-gray-600 p-[1rem] rounded-[0.5rem] text-white"
+          >
+            {status ? "Closed" : "Enroll to this course"}
           </button>
           <div className="flex flex-col space-y-1">
             <h1 className="text-[1.1rem] font-[500]">

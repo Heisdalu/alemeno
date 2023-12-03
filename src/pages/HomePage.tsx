@@ -7,10 +7,10 @@ import Wrapper from "../components/Wrapper/Wrapper";
 import { useEffect, FC } from "react";
 import { courseListTypes } from "../@types";
 import ErrorModal from "../components/ErrorModal/ErrorModal";
+
 // import { getFirestore } from "firebase/firestore";
 
 const HomePage: FC<courseListTypes> = ({ data, error, loading }) => {
-  console.log(data, error, loading);
   const courseData: CourseCardTypes[] = data;
 
   // const [userData, setUserData] = useState<any[]>([]);
@@ -43,7 +43,9 @@ const HomePage: FC<courseListTypes> = ({ data, error, loading }) => {
         {error && <ErrorModal />}
         {!loading &&
           !error &&
-          courseData.map((item) => <CourseCard key={item.id} data={item} />)}
+          courseData.map((item) => (
+            <CourseCard key={item.id} data={item} allData={courseData} />
+          ))}
         {}
       </div>
     </Wrapper>

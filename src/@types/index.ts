@@ -29,6 +29,20 @@ export interface LessonTypes {
   content: string[];
 }
 
+export interface studentListTypes {
+  data: CourseEnrolledTypes[];
+  error: boolean;
+  loading: boolean;
+}
+
+export interface CourseEnrolledTypes {
+  thumbnail: string;
+  topic: string;
+  instructor: string;
+  text: string;
+  enrolledPercent: number;
+  date?: string;
+}
 
 export interface courseListTypes {
   data: CourseDetailTypes[];
