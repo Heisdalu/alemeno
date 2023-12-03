@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CourseDetailTypes } from "../../@types";
-
-export interface courseListTypes {
-  data: CourseDetailTypes[];
-  error: boolean;
-  loading: boolean;
-}
+import { courseListTypes } from "../../@types";
 
 interface CourseListPayloadTypes {
   new_data_state: CourseDetailTypes[];

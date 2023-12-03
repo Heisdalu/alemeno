@@ -10,7 +10,6 @@ interface Props {
 }
 
 const CourseCard: FC<Props> = ({ data }) => {
-  console.log(data);
 
   return (
     <div className="max-w-[350px] mx-auto md:grid md:[grid-template-columns:250px_1fr] md:[grid-gap:1.5rem] md:max-w-[none]">
@@ -49,7 +48,7 @@ const CourseCard: FC<Props> = ({ data }) => {
             <div className="flex space-x-[1rem]">
               <div
                 aria-label="enrollment status"
-                className="px-[0.5rem] rounded-[0.5rem] bg-green-300"
+                className="px-[0.5rem] rounded-[0.5rem] border-1"
               >
                 {data.enrollmentStatus}
               </div>

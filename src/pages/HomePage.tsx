@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CourseDetailTypes } from "../@types";
+import { CourseCardTypes } from "../@types";
 import CourseCard from "../components/CourseCard/CourseCard";
 import Loading from "../components/Loading/Loading";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { useEffect, FC } from "react";
-import { courseListTypes } from "../redux/slice/courseListSlice";
+import { courseListTypes } from "../@types";
+import ErrorModal from "../components/ErrorModal/ErrorModal";
 // import { getFirestore } from "firebase/firestore";
 
-const HomePage: FC<courseListTypes> = (props) => {
-  console.log(props);
+const HomePage: FC<courseListTypes> = ({ data, error, loading }) => {
+  console.log(data, error, loading);
+  const courseData: CourseCardTypes[] = data;
 
   // const [userData, setUserData] = useState<any[]>([]);
   const clickMe = async () => {
@@ -28,8 +30,6 @@ const HomePage: FC<courseListTypes> = (props) => {
     // });
   };
 
-  // console.log("current data", userData);
-
   useEffect(() => {
     window.scroll(0, 0);
 
@@ -39,11 +39,12 @@ const HomePage: FC<courseListTypes> = (props) => {
   return (
     <Wrapper>
       <div className="space-y-[2rem] py-[1rem]">
-        <Loading />
-        <button onClick={clickMe}>click me</button>
-        {/* {db.map((item) => (
-          <CourseCard key={item.id} data={item} />
-        ))} */}
+        {loading && <Loading />}
+        {error && <ErrorModal />}
+        {!loading &&
+          !error &&
+          courseData.map((item) => <CourseCard key={item.id} data={item} />)}
+        {}
       </div>
     </Wrapper>
   );

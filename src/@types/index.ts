@@ -28,3 +28,10 @@ export interface LessonTypes {
   topic: string;
   content: string[];
 }
+
+
+export interface courseListTypes {
+  data: CourseDetailTypes[];
+  error: boolean;
+  loading: boolean;
+}

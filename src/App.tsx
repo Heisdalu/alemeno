@@ -34,7 +34,7 @@ function App() {
         if (latestData) {
           dispatch(
             update({
-              new_data_state: latestData,
+              new_data_state: latestData.data,
               errorPresent: false,
               loading: false,
             })
@@ -57,7 +57,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage {...courseData} />} />
-        <Route path="/course-detail" element={<CourseDetail />} />
+        <Route
+          path="/course-detail"
+          element={<CourseDetail {...courseData} />}
+        />
         <Route path="/dashboard" element={<StudentDashboard />} />
         <Route path="/search" element={<SearchPage />} />
         {/* <Route path="*" element={<HomePage />} /> */}
