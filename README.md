@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Dracora
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Alemeno Assesment
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Table of contents](#table-of-contents)
+- [Overview](#overview)
+  - [Links](#links)
+  - [Built with](#built-with)
+- [Installation](#installation)
+- [Acknowledgement](#acknowledgement)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Links
 
-- Configure the top-level `parserOptions` property like this:
+- Live Site URL: [Click here](https://alemeno-beta.vercel.app//)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Built with
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Typescript
+- React.js
+- Tailwind.css
+- React Router dom
+- ReduxToolkit
+- Firebase
+
+## Task
+- Addded the course listing page
+- Real time liking  of a course
+- used a special key to differentiate users
+- You can view details wiht thumbnails, instructor, author
+- Built an accessible syllabus component and it accessible by keyboard and screen users. you can focus on it and try it out.
+- Built a student dashboard page to show courses, the student enrolled for
+- added an accessible progress bar and also the completed button
+
+## Installation
+
+- Clone repo into your drive
+- cd into the repo
+- run yarn install on the terminal to dwonload the packages
+- after installation of packages, run yarn dev
