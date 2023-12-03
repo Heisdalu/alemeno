@@ -1,6 +1,11 @@
 import { CiSearch } from "react-icons/ci";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const { pathname } = useLocation();
+
+  console.log(pathname);
+
   return (
     <div className="py-[1.5rem] flex items-center justify-center flex-col space-y-[1rem] md:flex-row md:justify-between md:space-y-0">
       <div className="border-1 rounded-[0.5rem] flex items-center space-x-1 mx-auto px-1 md:mx-[0] md:w-[300px]">
@@ -15,10 +20,21 @@ const Header = () => {
           id="search"
         />
       </div>
+      <Link
+        to="/"
+        className="border-1 border-[#d1d7dc] p-[1rem] rounded-[0.5rem] text-black"
+      >
+        Go back home
+      </Link>
 
-      <button className="bg-purple-600 p-[1rem] rounded-[0.5rem] text-white">
-        Enrolled Courses
-      </button>
+      {!(pathname === "/dashboard") && (
+        <Link
+          to="/dashboard"
+          className="bg-purple-600 p-[1rem] rounded-[0.5rem] text-white"
+        >
+          Enrolled Courses
+        </Link>
+      )}
     </div>
   );
 };
