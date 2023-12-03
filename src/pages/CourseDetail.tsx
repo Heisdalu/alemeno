@@ -1,8 +1,13 @@
 import Requirement from "../components/CourseDetail/Requirement";
 import Syllabus from "../components/CourseDetail/Syllabus/Syllabus";
 import Wrapper from "../components/Wrapper/Wrapper";
+import { useEffect } from "react";
 
 const CourseDetail = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <Wrapper>
       <div className="py-[1rem] space-y-1 pb-[3rem] md:space-y-[2rem]">

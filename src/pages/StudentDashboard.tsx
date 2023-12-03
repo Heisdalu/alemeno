@@ -1,7 +1,12 @@
 import CourseEnrolled from "../components/CourseEnrolled/CourseEnrolled";
 import Wrapper from "../components/Wrapper/Wrapper";
+import { useEffect } from "react";
 
 const StudentDashboard = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <Wrapper>
       <div className="">

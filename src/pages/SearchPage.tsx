@@ -1,9 +1,9 @@
-import CourseCard from "../components/CourseCard/CourseCard";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { db } from "../config/data";
+import CourseCard from "../components/CourseCard/CourseCard";
 import { useEffect } from "react";
 
-const HomePage = () => {
+const SearchPage = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -18,4 +18,4 @@ const HomePage = () => {
     </Wrapper>
   );
 };
-export default HomePage;
+export default SearchPage;

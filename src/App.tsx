@@ -3,6 +3,7 @@ import CourseDetail from "./pages/CourseDetail";
 import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router-dom";
 import StudentDashboard from "./pages/StudentDashboard";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/course-detail" element={<CourseDetail />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>
