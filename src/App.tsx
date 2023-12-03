@@ -26,7 +26,6 @@ function App() {
     id,
   };
 
-
   useEffect(() => {
     const fetchLatestChanges = async () => {
       // get all courses

@@ -1,6 +1,9 @@
 import { FC, useEffect, useRef } from "react";
 
 import { CourseEnrolledTypes } from "../../@types";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import useId from "../../hooks/useId";
 
 const CourseEnrolled: FC<CourseEnrolledTypes> = ({
   enrolledPercent,
@@ -9,10 +12,29 @@ const CourseEnrolled: FC<CourseEnrolledTypes> = ({
   text,
   thumbnail,
   topic,
+  allData,
 }) => {
   const progessRef = useRef<HTMLDivElement | null>(null);
+  const { id } = useId();
 
-  console.log(enrolledPercent);
+  const completeButton = async () => {
+    // const
+    if (allData && id) {
+      const item = structuredClone(allData).map((el) => {
+        if (el.thumbnail === thumbnail) {
+          el.enrolledPercent = 100;
+        }
+        return el;
+      });
+      try {
+        await setDoc(doc(db, "students", id), {
+          studentInfo: [...item],
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
 
   useEffect(() => {
     if (progessRef.current) {
@@ -44,9 +66,13 @@ const CourseEnrolled: FC<CourseEnrolledTypes> = ({
                 className={`h-[5px] w-[0] bg-blue-500 rounded-[0.5rem]`}
               ></div>
             </div>
-            <span>{enrolledPercent}% complete</span>
+            <span className="">{enrolledPercent}% complete</span>
           </div>
-          <button className="rounded-[0.5rem] bg-purple-500 text-white p-[0.5rem]">
+          <button
+            onClick={completeButton}
+            disabled={enrolledPercent === 100 ? true : false}
+            className="disabled:bg-slate-600 disabled:hover:[cursor:not-allowed] rounded-[0.5rem] bg-purple-500 text-white p-[0.5rem]"
+          >
             Mark as completed
           </button>
         </div>

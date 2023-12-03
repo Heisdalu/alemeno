@@ -19,8 +19,6 @@ const StudentDashboard = () => {
     (state: RootState) => state.studentList
   );
 
-  console.log(data, error, loading);
-
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -69,6 +67,7 @@ const StudentDashboard = () => {
               thumbnail={el.thumbnail}
               topic={el.topic}
               date={el.date}
+              allData={data}
             />
           ))}
         </div>

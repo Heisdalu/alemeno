@@ -51,7 +51,7 @@ const WeekLesson: FC<WeekLessonTypes> = ({ item, count, specialkey }) => {
         className={isOpen ? "flex flex-col" : "hidden"}
         id="buttonDropDown"
       >
-        {item.content.map((subtopic, i) => (
+        {item?.content.map((subtopic, i) => (
           <div
             key={i}
             className="flex items-center p-[1rem] space-x-[1rem] break-all"

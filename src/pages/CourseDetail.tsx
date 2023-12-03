@@ -2,7 +2,7 @@ import Requirement from "../components/CourseDetail/Requirement";
 import Syllabus from "../components/CourseDetail/Syllabus/Syllabus";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { useEffect, FC } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { courseListTypes } from "../@types";
 import Loading from "../components/Loading/Loading";
 import ErrorModal from "../components/ErrorModal/ErrorModal";
@@ -17,6 +17,7 @@ import { RootState } from "../redux/store";
 const CourseDetail: FC<courseListTypes> = ({ data, error, loading }) => {
   const { id } = useId();
   const [course_id] = useSearchParams();
+  const navigate = useNavigate();
   const studentList = useSelector((state: RootState) => state.studentList.data);
 
   const courseDetailItem = data.find(
@@ -57,6 +58,8 @@ random value.. 1,100
         await setDoc(doc(db, "students", id), {
           studentInfo: [...oldinfo],
         });
+
+        navigate("/dashboard");
       } catch (e) {
         console.log(e);
       }
@@ -158,7 +161,11 @@ random value.. 1,100
           </div>
 
           <div>
-            <Syllabus list={courseDetailItem?.syllabus} />
+            {courseDetailItem?.syllabus ? (
+              <Syllabus list={courseDetailItem?.syllabus} />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

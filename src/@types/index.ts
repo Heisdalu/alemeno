@@ -42,6 +42,7 @@ export interface CourseEnrolledTypes {
   text: string;
   enrolledPercent: number;
   date?: string;
+  allData?: CourseEnrolledTypes[];
 }
 
 export interface courseListTypes {

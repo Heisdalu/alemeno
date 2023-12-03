@@ -6,7 +6,6 @@ interface SyllabusTypes {
 }
 
 const Syllabus: FC<SyllabusTypes> = ({ list }) => {
-  console.log(list);
 
   // improve web accesibilty for keyboards user using arrow keys
   const [count, setCount] = useState(0);
