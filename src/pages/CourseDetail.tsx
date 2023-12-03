@@ -19,20 +19,9 @@ const CourseDetail: FC<courseListTypes> = ({ data, error, loading }) => {
   const [course_id] = useSearchParams();
   const studentList = useSelector((state: RootState) => state.studentList.data);
 
-  // console.log(course_id.get("course"));
-
   const courseDetailItem = data.find(
     (el) => el.id === Number(course_id?.get("course"))
   );
-
-  console.log(studentList);
-  // console.log(
-  //   studentList.some((el) => {
-  //     console.log(el.topic ===);
-
-  //     el.topic?.includes(courseDetailItem?.name);
-  //   })
-  // );
 
   /*
 thumbnail
@@ -68,8 +57,6 @@ random value.. 1,100
         await setDoc(doc(db, "students", id), {
           studentInfo: [...oldinfo],
         });
-
-        console.log("hhhdhdhdh");
       } catch (e) {
         console.log(e);
       }

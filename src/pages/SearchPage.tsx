@@ -6,9 +6,12 @@ import { useSearchParams } from "react-router-dom";
 import Loading from "../components/Loading/Loading";
 import ErrorModal from "../components/ErrorModal/ErrorModal";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const SearchPage: FC<courseListTypes> = ({ data, error, loading }) => {
   const [course_name] = useSearchParams();
+  const allCoureList = useSelector((state: RootState) => state.courseList.data);
   const course = course_name?.get("course")?.toLowerCase() || "";
   const courseItem = data.filter(
     (el) =>
@@ -54,7 +57,7 @@ const SearchPage: FC<courseListTypes> = ({ data, error, loading }) => {
       <div className="space-y-[2rem] py-[1rem]">
         <div className="text-center">Your search: {course}</div>
         {courseItem.map((item) => (
-          <CourseCard key={item.id} data={item} />
+          <CourseCard key={item.id} data={item} allData={allCoureList} />
         ))}
       </div>
     </Wrapper>

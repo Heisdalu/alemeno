@@ -26,7 +26,6 @@ function App() {
     id,
   };
 
-  console.log("yesssss");
 
   useEffect(() => {
     const fetchLatestChanges = async () => {
